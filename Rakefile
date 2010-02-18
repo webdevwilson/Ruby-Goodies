@@ -1,8 +1,3 @@
-# 
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
- 
-
 require 'rubygems'
 require 'rake'
 require 'rake/clean'
@@ -10,10 +5,11 @@ require 'rake/gempackagetask'
 require 'rake/rdoctask'
 require 'rake/testtask'
 require 'spec/rake/spectask'
+require 'goodies/rake'
 
 spec = Gem::Specification.new do |s|
-  s.name = 'ruby-goodies'
-  s.version = '0.0.1'
+  s.name = 'goodies'
+  s.version = '0.0.2'
   s.has_rdoc = true
   s.extra_rdoc_files = ['README', 'LICENSE']
   s.summary = 'Developer tools to make your life easier'
@@ -22,8 +18,9 @@ spec = Gem::Specification.new do |s|
 DESC
   s.author = 'Kerry R Wilson'
   s.email = 'kwilson@goodercode.com'
+  s.homepage = 'http://www.goodercode.com'
   # s.executables = ['your_executable_here']
-  s.files = %w(LICENSE README Rakefile) + Dir.glob("{bin,lib,spec}/**/*")
+  s.files = %w(LICENSE README) + Dir.glob("{bin,lib,spec}/**/*")
   s.require_path = "lib"
   s.bindir = "bin"
 end
@@ -53,7 +50,12 @@ Spec::Rake::SpecTask.new do |t|
 end
 
 gem_file = "#{spec.name}-#{spec.version}.gem"
-desc "Install the gem file #{gem_file}"
-Rake::Task.define_task :install => :gem do |t|
-  exec "gem install pkg/#{gem_file}"
+#desc "Install the gem file #{gem_file}"
+#Rake::Task.define_task :install => :gem do |t|
+#  exec "gem install pkg/#{gem_file}"
+#end
+
+desc "Push the gem file #{gem_file}"
+Rake::Task.define_task :push => :gem do |t|
+  exec "gem push pkg/#{gem_file}"
 end

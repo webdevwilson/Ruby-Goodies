@@ -1,3 +1,20 @@
 == ruby-goodies
 
 Developer tools to make your life easier.  As blogged about on goodercode.com
+
+goodies/lang
+================================================================================
+String
+    - Adds / operator for joining file paths ('path'/'to'/'a'/'dir')
+Hash
+    - Adds ability to access hash values similar to objects (hash.key)
+
+
+goodies/rake
+================================================================================
+    - Add install task to GemPackageTask
+
+
+VERSION HISTORY:
+0.1 - String '/' overload, Hash object accessor
+0.2 - Rake Gem install task
